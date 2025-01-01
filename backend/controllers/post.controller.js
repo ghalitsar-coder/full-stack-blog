@@ -176,6 +176,13 @@ export const featurePost = async (req, res) => {
   res.status(200).json(updatedPost);
 };
 
+console.log('URL CLIENT:POST', process.env.CLIENT_URL);
+
+console.log('URL Endpoint:POST', process.env.IK_URL_ENDPOINT);
+console.log('Public Key:POST', process.env.IK_PUBLIC_KEY);
+console.log('Private Key:POST', process.env.IK_PRIVATE_KEY);
+
+
 const imagekit = new ImageKit({
   urlEndpoint: process.env.IK_URL_ENDPOINT,
   publicKey: process.env.IK_PUBLIC_KEY,

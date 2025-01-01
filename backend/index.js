@@ -1,14 +1,16 @@
+import "./lib/config.js";
 import express from "express";
 import connectDB from "./lib/connectDB.js";
 import userRouter from "./routes/user.route.js";
 import postRouter from "./routes/post.route.js";
 import commentRouter from "./routes/comment.route.js";
 import webhookRouter from "./routes/webhook.route.js";
+
 import { clerkMiddleware, requireAuth } from "@clerk/express";
 import cors from "cors";
 
 const app = express();
-
+ 
 app.use(cors(process.env.CLIENT_URL));
 app.use(clerkMiddleware());
 app.use("/webhooks", webhookRouter);
@@ -57,6 +59,8 @@ app.use((error, req, res, next) => {
     stack: error.stack,
   });
 });
+
+console.log("heloo");
 
 app.listen(3000, () => {
   connectDB();
